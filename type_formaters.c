@@ -15,7 +15,7 @@ int print_int(int a)
 		total++;
 		if (a == -2147483648)
 		{
-			write(1,"21474483648",10);
+			write(1,"2147483648",10);
 			return (total + 10);
 		}
 		total += print_int(-a);
