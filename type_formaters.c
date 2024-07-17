@@ -13,13 +13,22 @@ int print_int(int a)
 	if (a < 0)
 	{
 		write(1, &negative, 1);
+		total++;
 		print_int(-a);
 	}
-	if (a > 0)
+	if (a >= 0)
 	{
-		total++;
-		total += print_int(a / 10);
-		write(1, &b, 1);
+		if (a / 10 > 0)
+		{
+			total++;
+			total += print_int(a / 10);
+			write(1, &b, 1);
+		}
+		else
+		{
+			write(1, &b, 1);
+			total++;
+		}
 	}
 	return (total);
 }
