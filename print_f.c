@@ -18,28 +18,26 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			swich(format[i])
+			switch(format[i])
 			{
 				case 'i':
-				long_total += print_int(va_args(args, int));
+				long_total += print_int(va_arg(args, int));
 				break;
 				case 'c':
-				long_total += print_char(va_args(args, int));
+				long_total += print_char(va_arg(args, int));
 				break;
 				case 's':
-				long_total += print_string(va_args(args, char *));
+				long_total += print_str(va_arg(args, char *));
 				break;
 				case '%':
-				write(1, '%', 1);
+				write(1, &format[i], 1);
 				long_total++;
-				break;
-				case default:
 				break;
 			}
 		}
 		else
 		{
-			write(1, format[i], 1);
+			write(1, &format[i], 1);
 			long_total++;
 		}
 
