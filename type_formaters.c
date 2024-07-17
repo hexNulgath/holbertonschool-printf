@@ -13,8 +13,7 @@ int print_int(int a)
 	if (a < 0)
 	{
 		write(1, &negative, 1);
-		total++;
-		print_int(-a);
+		total += print_int(-a);
 	}
 	if (a >= 0)
 	{
