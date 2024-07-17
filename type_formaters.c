@@ -8,11 +8,16 @@ int print_int(int a)
 {
 	int total = 0;
 	int b = a % 10 + '0';
-	char negative = '-';
 
 	if (a < 0)
 	{
-		write(1, &negative, 1);
+		write(1, "-", 1);
+		total++;
+		if (a == -2147483648)
+		{
+			write(1,"21474483648",10);
+			return (total + 10);
+		}
 		total += print_int(-a);
 	}
 	if (a >= 0)
