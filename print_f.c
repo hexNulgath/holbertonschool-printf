@@ -23,6 +23,9 @@ int _printf(const char *format, ...)
 				case 'i':
 				long_total += print_int(va_arg(args, int));
 				break;
+				case 'd':
+                                long_total += print_int(va_arg(args, int));
+                                break;
 				case 'c':
 				long_total += print_char(va_arg(args, int));
 				break;

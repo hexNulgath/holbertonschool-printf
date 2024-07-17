@@ -3,8 +3,14 @@
 int print_int(int a)
 {
 	int total = 0;
-	int b = a % 10;
-
+	int b = a % 10 + '0';
+	char negative = '-';
+	
+	if (a < 0)
+	{
+		write(1, &negative, 1);
+		print_int(-a);
+	}
 	if (a > 0)
 	{
 		total++;
@@ -31,7 +37,6 @@ int print_str(char *a)
 	for (i = 0; a[i] != '\0'; i++)
 	{
 		write(1, &a[i], 1);
-		i++;
 	}
 	return (total);
 }
