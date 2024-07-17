@@ -1,41 +1,41 @@
 #include "main.h"
 /**
- * _printf - function
- * @format: args
- * Return: Always
+ * _printf - produce output according to a given format
+ * @format: a string containig instructions and characters to print
+ * Return: the amount of characters printed
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i;
-	int long_total = 0;
+	int long_total = 0, i = 0;
 
 	va_list(args);
-
 	va_start(args, format);
-
-	for (i = 0; format[i] != '\0'; i++)
+	for (; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			switch(format[i])
+			switch (format[i])
 			{
 				case 'i':
-				long_total += print_int(va_arg(args, int));
-				break;
 				case 'd':
-                                long_total += print_int(va_arg(args, int));
-                                break;
+					long_total += print_int(va_arg(args, int));
+					break;
 				case 'c':
-				long_total += print_char(va_arg(args, int));
-				break;
+					long_total += print_char(va_arg(args, int));
+					break;
 				case 's':
-				long_total += print_str(va_arg(args, char *));
-				break;
+					long_total += print_str(va_arg(args, char *));
+					break;
 				case '%':
-				write(1, &format[i], 1);
-				long_total++;
-				break;
+					write(1, &format[i], 1);
+					long_total++;
+					break;
+				case '\0':
+					return (-1);
+				default:
+					long_total += _printf("%%%c", format[i]);
+					break;
 			}
 		}
 		else
@@ -45,6 +45,5 @@ int _printf(const char *format, ...)
 		}
 
 	}
-		return (long_total);
-
+	return (long_total);
 }
